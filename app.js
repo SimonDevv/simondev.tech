@@ -4,7 +4,6 @@ const translations = {
     __title: "Simon Dev | Developer · Python · Web · Automation",
     __description: "Simon Dev - Developer con base sólida en desarrollo multiplataforma (Python, Java, C#, Unity, Web) especializado en automatización, scraping y pequeñas APIs para clientes remotos.",
 
-    nav_home: "Inicio",
     nav_about: "Sobre mí",
     nav_projects: "Proyectos",
     nav_services: "Servicios",
@@ -99,7 +98,6 @@ const translations = {
     __title: "Simon Dev | Developer · Python · Web · Automation",
     __description: "Simon Dev - Developer with a solid background in cross-platform development (Python, Java, C#, Unity, Web) specialized in automation, scraping and small APIs for remote clients.",
 
-    nav_home: "Home",
     nav_about: "About",
     nav_projects: "Projects",
     nav_services: "Services",
