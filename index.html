@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <title>Simon Dev | Developer · Python · Web · Automation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Simon Dev - Developer con base sólida en desarrollo multiplataforma (Python, Java, C#, Unity, Web) especializado en automatización, scraping y pequeñas APIs para clientes remotos.">
+  <meta
+    name="description"
+    content="Simon Dev - Developer con base sólida en desarrollo multiplataforma (Python, Java, C#, Unity, Web) especializado en automatización, scraping y pequeñas APIs para clientes remotos."
+  >
 
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -856,9 +859,12 @@
   </footer>
 
   <script>
-    // Traducciones
+    // Traducciones + SEO (title y meta description)
     const translations = {
       es: {
+        __title: "Simon Dev | Developer · Python · Web · Automation",
+        __description: "Simon Dev - Developer con base sólida en desarrollo multiplataforma (Python, Java, C#, Unity, Web) especializado en automatización, scraping y pequeñas APIs para clientes remotos.",
+
         nav_about: "Sobre mí",
         nav_projects: "Proyectos",
         nav_services: "Servicios",
@@ -944,6 +950,9 @@
       },
 
       en: {
+        __title: "Simon Dev | Developer · Python · Web · Automation",
+        __description: "Simon Dev - Developer with a solid background in cross-platform development (Python, Java, C#, Unity, Web) specialized in automation, scraping and small APIs for remote clients.",
+
         nav_about: "About",
         nav_projects: "Projects",
         nav_services: "Services",
@@ -1035,8 +1044,10 @@
         btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
       });
 
+      // atributo lang en <html>
       document.documentElement.lang = lang;
 
+      // Textos de la página
       document.querySelectorAll("[data-key]").forEach(el => {
         const key = el.getAttribute("data-key");
         const value = translations[lang] && translations[lang][key];
@@ -1044,6 +1055,17 @@
           el.innerHTML = value;
         }
       });
+
+      // Title dinámico
+      if (translations[lang].__title) {
+        document.title = translations[lang].__title;
+      }
+
+      // Meta description dinámica
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && translations[lang].__description) {
+        metaDesc.setAttribute("content", translations[lang].__description);
+      }
 
       localStorage.setItem("lang", lang);
     }
