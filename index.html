@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Simon Dev | Developer · Python · Web · Automation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Simon Dev - Developer con base sólida en desarrollo multiplataforma (Python, Java, C#, Unity, Web) especializado en automatización, scraping y pequeñas APIs.">
+  <meta name="description" content="Simon Dev - Developer con base sólida en desarrollo multiplataforma (Python, Java, C#, Unity, Web) especializado en automatización, scraping y pequeñas APIs para clientes remotos.">
 
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,189 +26,490 @@
       --shadow-soft: 0 20px 60px rgba(0,0,0,0.65);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
         radial-gradient(circle at top left, #1d2538 0, transparent 50%),
         radial-gradient(circle at top right, #0b1120 0, transparent 55%),
         radial-gradient(circle at bottom, #020617 0, #000 55%);
       color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    /* NAV */
+    /* NAVBAR */
     .nav {
-      position: sticky; top: 0; z-index: 20;
+      position: sticky;
+      top: 0;
+      z-index: 20;
       backdrop-filter: blur(18px);
-      background: rgba(15,23,42,0.8);
+      background: linear-gradient(to bottom, rgba(15,23,42,0.9), rgba(15,23,42,0.6));
       border-bottom: 1px solid rgba(31,41,55,0.9);
     }
+
     .nav-inner {
-      max-width: 1060px; margin: 0 auto;
+      max-width: 1060px;
+      margin: 0 auto;
       padding: 10px 20px;
-      display: flex; justify-content: space-between;
-      align-items: center; gap: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 14px;
     }
+
     .nav-left {
-      display: flex; align-items: center;
-      gap: 10px; font-size: 12px; letter-spacing: .08em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 11px;
       color: var(--text-soft);
     }
+
     .nav-dot {
-      width: 10px; height: 10px; border-radius: 999px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
       background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
       animation: pulse 1.8s infinite;
     }
+
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
       70% { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
       100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
     }
-    .nav-links { display: flex; gap: 18px; color: var(--text-soft); }
-    .nav-links a { position: relative; }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: var(--text-soft);
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.18s ease-out;
+    }
+
     .nav-links a::after {
-      content: ""; position: absolute; left: 0; bottom: -3px;
-      width: 0; height: 1px; background: var(--accent);
-      transition: width 0.2s;
-    }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* HERO */
-    header { padding: 28px 20px 10px; }
-    .container {
-      max-width: 1060px; margin: 0 auto;
-      padding: 0 20px 40px;
-    }
-    .hero {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: 1.8fr 1.2fr;
-      gap: 30px;
-    }
-    @media(max-width: 768px){
-      .hero { grid-template-columns: 1fr; }
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.18s ease-out;
     }
 
-    .chip {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 4px 10px;
+    .nav-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid rgba(148,163,184,0.4);
       background: rgba(15,23,42,0.8);
-      font-size: 11px; color: var(--text-soft);
+      display: none;
+      font-size: 12px;
+      color: var(--text-soft);
+      gap: 6px;
+      align-items: center;
     }
+
+    .nav-cta span.icon {
+      font-size: 13px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-cta {
+        display: inline-flex;
+      }
+    }
+
+    /* LAYOUT */
+    header {
+      padding: 28px 20px 10px;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto 48px;
+      padding: 0 20px 40px;
+    }
+
+    .hero {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
     .chip-code {
-      font-family: "JetBrains Mono"; color: #e5e7eb;
-      border-color: rgba(56,189,248,0.5);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+      background: rgba(15,23,42,0.95);
+      border-color: rgba(56,189,248,0.4);
+      color: #e5e7eb;
     }
 
     .hero-title {
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 700;
+      margin: 18px 0 8px;
       letter-spacing: -0.03em;
+      animation: fadeUp 0.6s ease-out;
     }
+
     .hero-sub {
-      font-size: 13px;
+      font-size: 14px;
+      margin: 0 0 14px;
       color: var(--accent);
-      font-family: "JetBrains Mono";
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: .08em;
     }
+
     .hero-text {
-      font-size: 15px; color: var(--text-soft);
+      font-size: 15px;
       line-height: 1.7;
+      color: var(--text-soft);
+      max-width: 40rem;
+    }
+
+    .hero-actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      padding: 10px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.85);
-      cursor: pointer;
+      padding: 9px 18px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
       font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
       color: var(--text-main);
       display: inline-flex;
-      gap: 8px; align-items: center;
-      transition: .25s;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease-out, transform 0.15s ease-out, box-shadow 0.2s;
     }
+
     .btn-primary {
       background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-      color: #000;
+      color: #0b1120;
       border-color: transparent;
-      box-shadow: 0 16px 40px rgba(56,189,248,0.25);
+      box-shadow: 0 16px 40px rgba(56,189,248,0.35);
     }
+
+    .btn span.emoji {
+      font-size: 15px;
+    }
+
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15,23,42,0.7);
     }
 
-    /* FOTO ANIMADA */
-    .profile-photo {
-      width: 100%;
-      max-width: 240px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
-      margin: 0 auto;
-      display: block;
-      opacity: 0;
-      transform: translateY(12px);
-      animation: photoFadeIn 1.2s ease-out forwards;
-      transition: box-shadow .25s, transform .25s;
-    }
-    .profile-photo:hover {
-      box-shadow: 0 22px 55px rgba(56,189,248,0.45);
-      transform: translateY(-3px);
-    }
-    @keyframes photoFadeIn {
-      0% { opacity: 0; transform: translateY(12px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .btn-primary:hover {
+      box-shadow: 0 18px 45px rgba(56,189,248,0.45);
     }
 
-    /* CARDS */
-    .card {
-      background: rgba(15,23,42,0.7);
-      border-radius: var(--radius);
-      padding: 18px;
+    .hero-card {
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
+      border-radius: 22px;
+      border: 1px solid rgba(148,163,184,0.55);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-card-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .metric-label {
+      color: var(--text-soft);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-weight: 500;
+    }
+
+    .console-card {
+      margin-top: 14px;
+      border-radius: 14px;
       border: 1px solid rgba(55,65,81,0.9);
-      box-shadow: 0 16px 40px rgba(15,23,42,0.85);
+      background: radial-gradient(circle at top left, #111827 0, #020617 70%);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 12px;
+      padding: 10px 12px;
+      color: #e5e7eb;
     }
 
-    .section { margin-top: 60px; }
-    .section-title { font-size: 20px; font-weight: 600; }
-    .section-sub { color: var(--text-soft); font-size: 13px; }
+    .console-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      color: #6b7280;
+      font-size: 11px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #f97373;
+    }
+
+    .dot:nth-child(2) {
+      background: #facc15;
+    }
+
+    .dot:nth-child(3) {
+      background: #22c55e;
+    }
+
+    .console-body-line {
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .prompt {
+      color: #22c55e;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 6px;
+      height: 12px;
+      background: #e5e7eb;
+      margin-left: 2px;
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-top: 56px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
-    @media(max-width:900px){ .grid { grid-template-columns: repeat(2,1fr); } }
-    @media(max-width:600px){ .grid { grid-template-columns: 1fr; } }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #111827 0, #020617 85%);
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      border: 1px solid rgba(55,65,81,0.95);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.85);
+      transition: transform 0.18s ease-out, box-shadow 0.2s ease-out, border-color 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 55px rgba(15,23,42,0.95);
+      border-color: rgba(56,189,248,0.6);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
 
     .badge {
       font-size: 11px;
       padding: 4px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.7);
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.9);
     }
 
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.9);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 768px) {
+      .steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .step {
+      border-radius: var(--radius);
+      border: 1px dashed rgba(75,85,99,0.8);
+      padding: 10px 12px;
+      background: rgba(15,23,42,0.9);
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    /* FOOTER */
     footer {
       padding: 20px;
-      text-align: center;
+      border-top: 1px solid rgba(31,41,55,0.9);
       font-size: 12px;
       color: var(--text-soft);
-      border-top: 1px solid rgba(31,41,55,0.7);
+      text-align: center;
+      background: radial-gradient(circle at bottom, #020617 0, #020617 55%, #000 100%);
     }
   </style>
 </head>
-
 <body>
   <!-- NAV -->
   <nav class="nav">
@@ -223,164 +524,326 @@
         <a href="#services">Servicios</a>
         <a href="#contact">Contacto</a>
       </div>
+      <a class="nav-cta" href="mailto:simon@simondev.tech">
+        <span class="icon">✉️</span> <span>Contactar</span>
+      </a>
     </div>
   </nav>
 
   <!-- HERO -->
   <header>
     <div class="container">
-      <section class="hero">
-
+      <section class="hero" id="top">
         <div>
-          <div class="chip">🟢 Disponible · Trabajo remoto</div>
-          <div class="chip chip-code">&lt;developer / python / web&gt;</div>
+          <div class="chip-row">
+            <div class="chip">
+              🟢 Disponible · Trabajo remoto / freelance
+            </div>
+            <div class="chip chip-code">
+              <span>&lt;code&gt; developer · python · web &lt;/code&gt;</span>
+            </div>
+          </div>
 
           <h1 class="hero-title">Hola, soy Simon.</h1>
-          <p class="hero-sub">DEVELOPER · PYTHON · JAVA · C# · WEB</p>
-
-          <p class="hero-text">
-            Soy developer con base sólida en múltiples lenguajes y experiencia
-            en automatización, scraping, APIs y también interfaces web limpias.
+          <p class="hero-sub">
+            DEVELOPER · PYTHON · JAVA · C# · WEB
           </p>
-
-          <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn-primary" href="mailto:simon@simondev.tech">✉️ Contactar</a>
-            <a class="btn" href="https://github.com/SimonDevv" target="_blank">💻 GitHub</a>
+          <p class="hero-text">
+            Soy developer con base sólida en múltiples lenguajes (Python, Java, C#) y experiencia
+            en desarrollo multiplataforma. Me gusta construir herramientas útiles: scrapers,
+            automatizaciones, pequeñas APIs y también páginas web limpias y funcionales.
+          </p>
+          <p class="hero-text">
+            Combino programación con nociones de diseño y UX para que las soluciones no solo funcionen,
+            sino que también se vean bien y sean agradables de usar.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:simon@simondev.tech">
+              <span class="emoji">✉️</span><span>Hablemos de tu proyecto</span>
+            </a>
+            <a class="btn" href="https://github.com/SimonDevv" target="_blank" rel="noopener">
+              <span class="emoji">💻</span><span>Ver GitHub</span>
+            </a>
           </div>
         </div>
 
-        <aside class="card">
-          <h4 style="margin-top:0;color:var(--text-soft); font-size:13px;">Snapshot</h4>
-          <p><strong>Stack:</strong> Python, Java, C#, HTML, CSS, SQL</p>
-          <p><strong>Focus:</strong> Automatización, Scraping, Web</p>
-        </aside>
+        <aside class="hero-card">
+          <div class="hero-card-title">Snapshot rápido</div>
+          <div class="hero-metrics">
+            <div>
+              <div class="metric-label">Rol</div>
+              <div class="metric-value">Developer</div>
+            </div>
+            <div>
+              <div class="metric-label">Especialidad</div>
+              <div class="metric-value">Python · Automation · Web</div>
+            </div>
+            <div>
+              <div class="metric-label">Stack base</div>
+              <div class="metric-value">Python · Java · C#</div>
+            </div>
+            <div>
+              <div class="metric-label">Frontend</div>
+              <div class="metric-value">HTML · CSS · UI simple</div>
+            </div>
+          </div>
 
+          <div class="console-card">
+            <div class="console-header">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <span>terminal · simon.dev</span>
+            </div>
+            <div class="console-body">
+              <div class="console-body-line">
+                <span class="prompt">simon@dev:~$</span> <span id="typing"></span><span class="cursor"></span>
+              </div>
+              <div class="console-body-line">
+                <span class="prompt">stack&gt;</span> Python, Java, C#, Unity, HTML, CSS, SQL
+              </div>
+              <div class="console-body-line">
+                <span class="prompt">focus&gt;</span> automation, scraping, small web apps
+              </div>
+            </div>
+          </div>
+        </aside>
       </section>
     </div>
   </header>
 
-  <!-- ABOUT -->
   <main class="container">
+    <!-- ABOUT -->
     <section class="section" id="about">
-      <h2 class="section-title">Sobre mí</h2>
-      <p class="section-sub">Quién soy, qué hago y cómo trabajo.</p>
-
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
-        
-        <!-- FOTO -->
-        <div style="text-align:center;">
-          <img src="img/simon.jpg" alt="Foto de Simon Dev" class="profile-photo">
-        </div>
-
-        <!-- TEXTO -->
+      <div class="section-header">
+        <h2 class="section-title">Sobre mí</h2>
+        <p class="section-sub">Quién soy, de dónde vengo y cómo trabajo.</p>
+      </div>
+      <div style="display:grid;gap:18px;grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr);align-items:flex-start;">
         <div>
-          <p class="hero-text">
-            Soy developer con formación en desarrollo de aplicaciones multiplataforma (DAM)
-            y experiencia en Python, Java, C#, Unity y web. Me gusta crear herramientas que
-            resuelven problemas reales: scrapers, bots, automatizaciones y pequeñas APIs.
+          <p class="card-text" style="margin-bottom:10px;">
+            Soy developer con base en Python y una mezcla de experiencia técnica y de negocio.
+            Me interesa especialmente automatizar tareas, crear scrapers fiables y montar pequeñas
+            APIs que resuelvan problemas concretos.
           </p>
-          <p class="hero-text">
-            Además cuido la parte visual: tipografías limpias, layouts claros y buen diseño.
-            No soy diseñador, pero sí me gusta que todo tenga buena pinta.
+          <p class="card-text" style="margin-bottom:10px;">
+            Aunque ahora estoy más centrado en Python, vengo del mundo del desarrollo
+            de aplicaciones multiplataforma: he trabajado con Java, C#, Unity, HTML, CSS,
+            SQL, XML, JSON y conceptos de arquitectura de software. Eso me permite entender
+            los proyectos de forma global y no solo desde un lenguaje.
           </p>
-
-          <div class="card" style="margin-top:20px;">
-            <h3 style="margin-top:0;">Formación</h3>
-            <p>
-              Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM),
-              EDIB – Escuela Superior de Diseño y Desarrollo.
-            </p>
-            <ul style="color:var(--text-soft);font-size:14px;">
-              <li>Programación en Python, Java, C#</li>
-              <li>Bases de datos SQL</li>
-              <li>Interfaces y apps multiplataforma</li>
-              <li>Arquitectura y buenas prácticas</li>
-              <li>HTML, CSS, XML, JSON</li>
-            </ul>
-          </div>
-
+          <p class="card-text">
+            Además, me gusta cuidar la parte visual: estructurar bien la información,
+            usar tipografías legibles y crear interfaces limpias. No soy diseñador gráfico,
+            pero sí me preocupa que las cosas tengan buena pinta y se sientan profesionales.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-title">Formación · Desarrollo de Apps</div>
+          <p class="card-text" style="margin-bottom:8px;">
+            <strong>Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</strong><br>
+            EDIB – Escuela Superior de Diseño y Desarrollo.
+          </p>
+          <p class="card-text" style="margin-bottom:8px;">
+            Durante el FP trabajé todas las áreas clave del desarrollo de software, desde la
+            programación orientada a objetos hasta bases de datos y aplicaciones completas.
+          </p>
+          <ul class="card-text" style="padding-left:18px;margin-bottom:8px;">
+            <li>Programación orientada a objetos (Java, Python, C#).</li>
+            <li>Bases de datos SQL y modelado relacional.</li>
+            <li>Desarrollo de interfaces y aplicaciones multiplataforma.</li>
+            <li>Consumo de APIs y servicios web.</li>
+            <li>Arquitectura de software y buenas prácticas.</li>
+          </ul>
+          <p class="card-text" style="margin-bottom:8px;">
+            Lenguajes y tecnologías que he trabajado:
+          </p>
+          <ul class="card-text" style="padding-left:18px;">
+            <li>Python, Java, C#.</li>
+            <li>Unity (juegos y simulaciones).</li>
+            <li>HTML, CSS, XML, JSON.</li>
+            <li>SQL y modelado de bases de datos.</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section class="section" id="projects">
-      <h2 class="section-title">Proyectos</h2>
-      <p class="section-sub">Ejemplos de lo que hago</p>
-
+      <div class="section-header">
+        <h2 class="section-title">Proyectos destacados</h2>
+        <p class="section-sub">Muy pronto serán estudios de caso reales enlazados a GitHub.</p>
+      </div>
       <div class="grid">
+        <article class="card">
+          <h3 class="card-title">Perfume Price Scraper</h3>
+          <p class="card-text">
+            Script que extrae precios de perfumes desde varias tiendas online y genera un dataset limpio
+            listo para analizar o usar en comparadores.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">Requests</span>
+            <span class="badge">BeautifulSoup4</span>
+          </div>
+          <a class="badge-row" style="font-size:12px;" href="https://github.com/SimonDevv" target="_blank" rel="noopener">
+            Ver en GitHub →
+          </a>
+        </article>
 
-        <div class="card">
-          <h3>Perfume Price Scraper</h3>
-          <p>Scraper para comparar precios de perfumes en distintas tiendas.</p>
-          <span class="badge">Python</span>
-          <span class="badge">BS4</span>
-        </div>
+        <article class="card">
+          <h3 class="card-title">Automation Bot</h3>
+          <p class="card-text">
+            Bot personal que organiza archivos, lanza avisos y reduce tareas repetitivas del día a día:
+            renombrar, mover, archivar y enviar resúmenes.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">Automation</span>
+            <span class="badge">Scheduling</span>
+          </div>
+          <a class="badge-row" style="font-size:12px;" href="https://github.com/SimonDevv" target="_blank" rel="noopener">
+            Ver en GitHub →
+          </a>
+        </article>
 
-        <div class="card">
-          <h3>Automation Bot</h3>
-          <p>Automatiza tareas repetitivas: organizar archivos, enviar reportes y más.</p>
-          <span class="badge">Python</span>
-          <span class="badge">Automation</span>
-        </div>
-
-        <div class="card">
-          <h3>Mini Web UI</h3>
-          <p>Interfaces web limpias y funcionales con HTML y CSS.</p>
-          <span class="badge">HTML</span>
-          <span class="badge">CSS</span>
-        </div>
-
+        <article class="card">
+          <h3 class="card-title">Small Web / UI Projects</h3>
+          <p class="card-text">
+            Páginas y mini aplicaciones web donde combino HTML, CSS y algo de JavaScript para
+            crear interfaces sencillas, limpias y usables.
+          </p>
+          <div class="badge-row">
+            <span class="badge">HTML</span>
+            <span class="badge">CSS</span>
+            <span class="badge">UI / Layout</span>
+          </div>
+          <a class="badge-row" style="font-size:12px;" href="https://github.com/SimonDevv" target="_blank" rel="noopener">
+            Ver en GitHub →
+          </a>
+        </article>
       </div>
     </section>
 
     <!-- SERVICES -->
     <section class="section" id="services">
-      <h2 class="section-title">Servicios</h2>
-      <p class="section-sub">Lo que puedo hacer por ti</p>
-
+      <div class="section-header">
+        <h2 class="section-title">Qué puedo hacer por ti</h2>
+        <p class="section-sub">Servicios que puedo ofrecer como freelance.</p>
+      </div>
       <div class="grid">
+        <article class="card">
+          <h3 class="card-title">Automatización de tareas</h3>
+          <p class="card-text">
+            Scripts que ahorran tiempo: renombrar y mover archivos, generar informes, enviar correos
+            automáticos o procesar datos de forma recurrente.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">CLI tools</span>
+            <span class="badge">Cron / Scheduling</span>
+          </div>
+        </article>
 
-        <div class="card">
-          <h3>Automatización</h3>
-          <p>Scripts que ahorran tiempo y eliminan tareas repetitivas.</p>
-          <span class="badge">Python</span>
+        <article class="card">
+          <h3 class="card-title">Web scraping a medida</h3>
+          <p class="card-text">
+            Scrapers para recopilar información de webs públicas: precios, productos, reseñas,
+            listados… entregados en CSV, Excel o base de datos.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Scraping</span>
+            <span class="badge">Requests</span>
+            <span class="badge">BeautifulSoup4</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Landing pages & pequeñas webs</h3>
+          <p class="card-text">
+            Páginas simples pero cuidadas para proyectos personales, productos, portfolios o
+            presentaciones de servicios. Prioridad en claridad de contenido y diseño limpio.
+          </p>
+          <div class="badge-row">
+            <span class="badge">HTML</span>
+            <span class="badge">CSS</span>
+            <span class="badge">Layout</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="section" style="margin-top:28px;">
+        <div class="section-header">
+          <h3 class="section-title">Cómo suelo trabajar</h3>
+          <p class="section-sub">Proceso simple y directo.</p>
         </div>
-
-        <div class="card">
-          <h3>Scraping</h3>
-          <p>Obtención de datos de páginas web públicas.</p>
-          <span class="badge">Scraping</span>
+        <div class="steps">
+          <div class="step">
+            <div class="step-title">1 · Entendemos el problema</div>
+            <p>Me cuentas qué tarea quieres automatizar, qué datos necesitas o qué web quieres montar, con ejemplos reales.</p>
+          </div>
+          <div class="step">
+            <div class="step-title">2 · Propongo solución</div>
+            <p>Te explico cómo lo haría, qué entrego exactamente y plazos aproximados, sin tecnicismos innecesarios.</p>
+          </div>
+          <div class="step">
+            <div class="step-title">3 · Entrega y ajustes</div>
+            <p>Te entrego el script/web, lo probamos juntos y hacemos pequeños ajustes si hace falta.</p>
+          </div>
         </div>
-
-        <div class="card">
-          <h3>Pequeñas webs</h3>
-          <p>Landing pages simples y rápidas, con diseño limpio.</p>
-          <span class="badge">HTML</span>
-          <span class="badge">CSS</span>
-        </div>
-
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="section" id="contact">
-      <h2 class="section-title">Contacto</h2>
-      <p class="section-sub">Hablemos de tu proyecto</p>
-
-      <p>Si necesitas automatizar algo, extraer datos o una web sencilla, escríbeme:</p>
-
-      <a class="btn btn-primary" href="mailto:simon@simondev.tech">✉️ Enviar email</a>
+      <div class="section-header">
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-sub">La forma más fácil de hablar conmigo.</p>
+      </div>
+      <p class="card-text">
+        Si tienes una idea que te gustaría automatizar, necesitas un scraper, una pequeña herramienta
+        o una web sencilla pero cuidada, escríbeme con algunos detalles (qué problema tienes, qué datos
+        manejas y qué te gustaría conseguir) y te responderé con una propuesta directa.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:simon@simondev.tech">
+          ✉️ <span>Enviar email</span>
+        </a>
+        <a class="btn" href="https://github.com/SimonDevv" target="_blank" rel="noopener">
+          💻 <span>Ver GitHub</span>
+        </a>
+      </div>
     </section>
   </main>
 
   <footer>
-    © <span id="year"></span> Simon Dev • simondev.tech
+    © <span id="year"></span> Simon Dev · simondev.tech
   </footer>
 
   <script>
+    // Año footer
     document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 
+    // Efecto de typing en la consola
+    const typingEl = document.getElementById("typing");
+    const text = "building tools with code...";
+    let idx = 0;
+
+    function type() {
+      if (!typingEl) return;
+      typingEl.textContent = text.slice(0, idx);
+      idx++;
+      if (idx <= text.length) {
+        setTimeout(type, 90);
+      } else {
+        setTimeout(() => {
+          idx = 0;
+          type();
+        }, 1600);
+      }
+    }
+
+    type();
+  </script>E
 </body>
 </html>
