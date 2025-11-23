@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sobre mí | Simon Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sobre mí - Simon Dev, developer especializado en Python, automatización y scraping." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="about">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-left nav-brand">
+        <div class="nav-dot"></div>
+        <div>SIMON · DEVELOPER</div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" data-key="nav_home" data-page-link="home">Inicio</a>
+        <a href="about.html" data-key="nav_about" data-page-link="about">Sobre mí</a>
+        <a href="projects.html" data-key="nav_projects" data-page-link="projects">Proyectos</a>
+        <a href="services.html" data-key="nav_services" data-page-link="services">Servicios</a>
+        <a href="contact.html" data-key="nav_contact" data-page-link="contact">Contacto</a>
+      </div>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a class="nav-cta" href="mailto:simon@simondev.tech">
+        <span class="icon">✉️</span> <span data-key="nav_cta">Contactar</span>
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <div class="page-hero">
+        <h1 class="page-hero-title" data-key="about_title">Sobre mí</h1>
+        <p class="page-hero-sub" data-key="about_sub">Quién soy, de dónde vengo y cómo trabajo.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section section--alt">
+      <div style="display:grid;gap:18px;grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr);align-items:flex-start;">
+        <div class="about-bullets">
+          <p class="card-text" data-key="about_p1">
+            Trabajo sobre todo con Python para automatizar tareas, crear scrapers estables
+            y pequeñas APIs enfocadas a negocio.
+          </p>
+          <p class="card-text" data-key="about_p2">
+            Vengo del desarrollo multiplataforma (Java, C#, Unity, HTML, CSS, SQL…),
+            así que estoy acostumbrado a ver el proyecto como un todo, no solo como
+            funciones sueltas.
+          </p>
+          <p class="card-text" data-key="about_p3">
+            Me gusta que las herramientas sean fáciles de usar: estructura clara,
+            tipografías legibles y diseño sencillo pero cuidado.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-title" data-key="about_edu_title">Formación · Desarrollo de Apps</div>
+          <p class="card-text" style="margin-bottom:8px;" data-key="about_edu_p1">
+            <strong>Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</strong><br>
+            EDIB – Escuela Superior de Diseño y Desarrollo.
+          </p>
+          <p class="card-text" style="margin-bottom:8px;" data-key="about_edu_p2">
+            Durante el FP trabajé todas las áreas clave del desarrollo de software, desde la
+            programación orientada a objetos hasta bases de datos y aplicaciones completas.
+          </p>
+          <p class="card-text" style="margin-bottom:8px;" data-key="about_edu_p3">
+            Algunos puntos destacados:
+          </p>
+          <ul class="card-text" style="padding-left:18px;margin-bottom:8px;">
+            <li data-key="about_edu_li1">Programación orientada a objetos (Java, Python, C#).</li>
+            <li data-key="about_edu_li2">Bases de datos SQL y modelado relacional.</li>
+            <li data-key="about_edu_li3">Desarrollo de interfaces y aplicaciones multiplataforma.</li>
+            <li data-key="about_edu_li4">Consumo de APIs y servicios web.</li>
+            <li data-key="about_edu_li5">Arquitectura de software y buenas prácticas.</li>
+          </ul>
+          <p class="card-text" style="margin-bottom:8px;" data-key="about_edu_p4">
+            Lenguajes y tecnologías que he trabajado:
+          </p>
+          <ul class="card-text" style="padding-left:18px;">
+            <li data-key="about_edu_li6">Python, Java, C#.</li>
+            <li data-key="about_edu_li7">Unity (juegos y simulaciones).</li>
+            <li data-key="about_edu_li8">HTML, CSS, XML, JSON.</li>
+            <li data-key="about_edu_li9">SQL y modelado de bases de datos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Simon Dev · simondev.tech
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

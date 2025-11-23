@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Proyectos | Simon Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Proyectos de scraping, automatización y pequeñas webs de Simon Dev." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="projects">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-left nav-brand">
+        <div class="nav-dot"></div>
+        <div>SIMON · DEVELOPER</div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" data-key="nav_home" data-page-link="home">Inicio</a>
+        <a href="about.html" data-key="nav_about" data-page-link="about">Sobre mí</a>
+        <a href="projects.html" data-key="nav_projects" data-page-link="projects">Proyectos</a>
+        <a href="services.html" data-key="nav_services" data-page-link="services">Servicios</a>
+        <a href="contact.html" data-key="nav_contact" data-page-link="contact">Contacto</a>
+      </div>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a class="nav-cta" href="mailto:simon@simondev.tech">
+        <span class="icon">✉️</span> <span data-key="nav_cta">Contactar</span>
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <div class="page-hero">
+        <h1 class="page-hero-title" data-key="projects_title">Proyectos destacados</h1>
+        <p class="page-hero-sub" data-key="projects_sub">Casos prácticos de scrapers, automatización y pequeñas webs.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="grid">
+        <article class="card">
+          <div class="project-thumb">📊</div>
+          <h3 class="card-title" data-key="proj1_title">Perfume Price Scraper</h3>
+          <p class="card-text" data-key="proj1_text">
+            Script que extrae precios de perfumes desde varias tiendas online y genera un dataset limpio
+            listo para analizar o usar en comparadores.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">Requests</span>
+            <span class="badge">BeautifulSoup4</span>
+          </div>
+          <a class="badge-row" style="font-size:12px;" href="https://github.com/SimonDevv" target="_blank" rel="noopener" data-key="projects_view_github">
+            Ver en GitHub →
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="project-thumb">🤖</div>
+          <h3 class="card-title" data-key="proj2_title">Automation Bot</h3>
+          <p class="card-text" data-key="proj2_text">
+            Bot personal que organiza archivos, lanza avisos y reduce tareas repetitivas del día a día:
+            renombrar, mover, archivar y enviar resúmenes.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">Automation</span>
+            <span class="badge">Scheduling</span>
+          </div>
+          <a class="badge-row" style="font-size:12px;" href="https://github.com/SimonDevv" target="_blank" rel="noopener" data-key="projects_view_github_2">
+            Ver en GitHub →
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="project-thumb">🌐</div>
+          <h3 class="card-title" data-key="proj3_title">Small Web / UI Projects</h3>
+          <p class="card-text" data-key="proj3_text">
+            Páginas y mini aplicaciones web donde combino HTML, CSS y algo de JavaScript para
+            crear interfaces sencillas, limpias y usables.
+          </p>
+          <div class="badge-row">
+            <span class="badge">HTML</span>
+            <span class="badge">CSS</span>
+            <span class="badge">UI / Layout</span>
+          </div>
+          <a class="badge-row" style="font-size:12px;" href="https://github.com/SimonDevv" target="_blank" rel="noopener" data-key="projects_view_github_3">
+            Ver en GitHub →
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Simon Dev · simondev.tech
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Servicios | Simon Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Servicios de automatización, scraping y páginas web sencillas ofrecidos por Simon Dev." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="services">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-left nav-brand">
+        <div class="nav-dot"></div>
+        <div>SIMON · DEVELOPER</div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" data-key="nav_home" data-page-link="home">Inicio</a>
+        <a href="about.html" data-key="nav_about" data-page-link="about">Sobre mí</a>
+        <a href="projects.html" data-key="nav_projects" data-page-link="projects">Proyectos</a>
+        <a href="services.html" data-key="nav_services" data-page-link="services">Servicios</a>
+        <a href="contact.html" data-key="nav_contact" data-page-link="contact">Contacto</a>
+      </div>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a class="nav-cta" href="mailto:simon@simondev.tech">
+        <span class="icon">✉️</span> <span data-key="nav_cta">Contactar</span>
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <div class="page-hero">
+        <h1 class="page-hero-title" data-key="services_title">Qué puedo hacer por ti</h1>
+        <p class="page-hero-sub" data-key="services_sub">Servicios que puedo ofrecer como freelance.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="grid">
+        <article class="card">
+          <h3 class="card-title" data-key="serv1_title">Automatización de tareas</h3>
+          <p class="card-text" data-key="serv1_text">
+            Scripts que ahorran tiempo: organizar archivos, generar informes,
+            enviar correos automáticos o procesar datos de forma recurrente.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">CLI tools</span>
+            <span class="badge">Cron / Scheduling</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title" data-key="serv2_title">Web scraping a medida</h3>
+          <p class="card-text" data-key="serv2_text">
+            Scrapers para recopilar datos de webs públicas (precios, productos,
+            reseñas, listados…) listos para usar en Excel, CSV o bases de datos.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Scraping</span>
+            <span class="badge">Requests</span>
+            <span class="badge">BeautifulSoup4</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title" data-key="serv3_title">Landing pages & pequeñas webs</h3>
+          <p class="card-text" data-key="serv3_text">
+            Páginas simples pero cuidadas para proyectos personales, productos
+            o servicios, con prioridad en claridad de contenido y diseño limpio.
+          </p>
+          <div class="badge-row">
+            <span class="badge">HTML</span>
+            <span class="badge">CSS</span>
+            <span class="badge">Layout</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="section-header">
+        <h2 class="section-title" data-key="process_title">Cómo suelo trabajar</h2>
+        <p class="section-sub" data-key="process_sub">Proceso simple y directo.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-title" data-key="step1_title">1 · Entendemos el problema</div>
+          <p data-key="step1_text">Me cuentas qué tarea quieres automatizar, qué datos necesitas o qué web quieres montar, con ejemplos reales.</p>
+        </div>
+        <div class="step">
+          <div class="step-title" data-key="step2_title">2 · Propongo solución</div>
+          <p data-key="step2_text">Te explico cómo lo haría, qué entrego exactamente y plazos aproximados, sin tecnicismos innecesarios.</p>
+        </div>
+        <div class="step">
+          <div class="step-title" data-key="step3_title">3 · Entrega y ajustes</div>
+          <p data-key="step3_text">Te entrego el script/web, lo probamos juntos y hacemos pequeños ajustes si hace falta.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Simon Dev · simondev.tech
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contacto | Simon Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contacto con Simon Dev para proyectos de automatización, scraping o pequeñas webs." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="contact">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-left nav-brand">
+        <div class="nav-dot"></div>
+        <div>SIMON · DEVELOPER</div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" data-key="nav_home" data-page-link="home">Inicio</a>
+        <a href="about.html" data-key="nav_about" data-page-link="about">Sobre mí</a>
+        <a href="projects.html" data-key="nav_projects" data-page-link="projects">Proyectos</a>
+        <a href="services.html" data-key="nav_services" data-page-link="services">Servicios</a>
+        <a href="contact.html" data-key="nav_contact" data-page-link="contact">Contacto</a>
+      </div>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a class="nav-cta" href="mailto:simon@simondev.tech">
+        <span class="icon">✉️</span> <span data-key="nav_cta">Contactar</span>
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <div class="page-hero">
+        <h1 class="page-hero-title" data-key="contact_title">Contacto</h1>
+        <p class="page-hero-sub" data-key="contact_sub">La forma más fácil de hablar conmigo.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section section--alt">
+      <p class="card-text" data-key="contact_text">
+        Para pedirme una propuesta, cuéntame en un email:
+        qué tarea quieres automatizar o qué datos necesitas,
+        con qué herramientas trabajas ahora (Excel, ERP, web, etc.)
+        y en qué plazo te gustaría tenerlo listo. Con eso te respondo
+        con una solución concreta y un rango de presupuesto.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:simon@simondev.tech">
+          ✉️ <span data-key="contact_cta_primary">Enviar email</span>
+        </a>
+        <a class="btn" href="https://github.com/SimonDevv" target="_blank" rel="noopener">
+          💻 <span data-key="contact_cta_secondary">Ver GitHub</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Simon Dev · simondev.tech
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

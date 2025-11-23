@@ -6,558 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Simon Dev - Developer con base sólida en desarrollo multiplataforma (Python, Java, C#, Unity, Web) especializado en automatización, scraping y pequeñas APIs para clientes remotos."
+    content="Simon Dev - Developer con base sólida en desarrollo multiplataforma especializado en automatización, scraping y pequeñas APIs."
   >
-
-  <!-- Fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --card-bg: #0f172a;
-      --card-bg-soft: #0b1220;
-      --text-main: #e5e7eb;
-      --text-soft: #9ca3af;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56,189,248,0.18);
-      --border: #1f2937;
-      --radius: 16px;
-      --shadow-soft: 0 20px 60px rgba(0,0,0,0.65);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, #1d2538 0, transparent 50%),
-        radial-gradient(circle at top right, #0b1120 0, transparent 55%),
-        radial-gradient(circle at bottom, #020617 0, #000 55%);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* NAVBAR */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(15,23,42,0.9), rgba(15,23,42,0.6));
-      border-bottom: 1px solid rgba(31,41,55,0.9);
-    }
-
-    .nav-inner {
-      max-width: 1060px;
-      margin: 0 auto;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      font-size: 14px;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .nav-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
-      animation: pulse 1.8s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
-      70% { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
-      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      color: var(--text-soft);
-      flex-wrap: wrap;
-      font-size: 13px;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 4px;
-      transition: color 0.18s ease-out;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: var(--accent);
-      transition: width 0.18s ease-out;
-    }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: rgba(15,23,42,0.8);
-      display: none;
-      font-size: 12px;
-      color: var(--text-soft);
-      gap: 6px;
-      align-items: center;
-    }
-
-    .nav-cta span.icon {
-      font-size: 13px;
-    }
-
-    @media (min-width: 768px) {
-      .nav-cta {
-        display: inline-flex;
-      }
-    }
-
-    /* Language Switcher */
-    .lang-switcher {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .lang-btn {
-      background: rgba(15,23,42,0.6);
-      border: 1px solid rgba(148,163,184,0.5);
-      color: var(--text-soft);
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      cursor: pointer;
-      text-transform: uppercase;
-    }
-
-    .lang-btn:hover {
-      color: #e5e7eb;
-      border-color: var(--accent);
-    }
-
-    .lang-btn.active {
-      border-color: var(--accent);
-      color: #e5e7eb;
-    }
-
-    /* LAYOUT */
-    header {
-      padding: 28px 20px 10px;
-    }
-
-    .container {
-      max-width: 1060px;
-      margin: 0 auto 48px;
-      padding: 0 20px 40px;
-    }
-
-    .hero {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-      gap: 28px;
-      align-items: center;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.9);
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .chip-code {
-      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 11px;
-      background: rgba(15,23,42,0.95);
-      border-color: rgba(56,189,248,0.4);
-      color: #e5e7eb;
-    }
-
-    .hero-title {
-      font-size: 34px;
-      font-weight: 700;
-      margin: 18px 0 8px;
-      letter-spacing: -0.03em;
-      animation: fadeUp 0.6s ease-out;
-    }
-
-    .hero-sub {
-      font-size: 14px;
-      margin: 0 0 14px;
-      color: var(--accent);
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hero-text {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--text-soft);
-      max-width: 40rem;
-    }
-
-    .hero-actions {
-      margin-top: 20px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 9px 18px;
-      border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.9);
-      font-size: 13px;
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--text-main);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background 0.2s ease-out, transform 0.15s ease-out, box-shadow 0.2s;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-      color: #0b1120;
-      border-color: transparent;
-      box-shadow: 0 16px 40px rgba(56,189,248,0.35);
-    }
-
-    .btn span.emoji {
-      font-size: 15px;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(15,23,42,0.7);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 18px 45px rgba(56,189,248,0.45);
-    }
-
-    .hero-card {
-      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
-      border-radius: 22px;
-      border: 1px solid rgba(148,163,184,0.55);
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow-soft);
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .hero-card-title {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-    }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      font-size: 13px;
-    }
-
-    .metric-label {
-      color: var(--text-soft);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .13em;
-      margin-bottom: 4px;
-    }
-
-    .metric-value {
-      font-weight: 500;
-    }
-
-    .console-card {
-      margin-top: 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(55,65,81,0.9);
-      background: radial-gradient(circle at top left, #111827 0, #020617 70%);
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 12px;
-      padding: 10px 12px;
-      color: #e5e7eb;
-    }
-
-    .console-header {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
-      color: #6b7280;
-      font-size: 11px;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #f97373;
-    }
-
-    .dot:nth-child(2) {
-      background: #facc15;
-    }
-
-    .dot:nth-child(3) {
-      background: #22c55e;
-    }
-
-    .console-body-line {
-      margin-bottom: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .prompt {
-      color: #22c55e;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 6px;
-      height: 12px;
-      background: #e5e7eb;
-      margin-left: 2px;
-      animation: blink 1s steps(2, start) infinite;
-    }
-
-    @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-
-    /* SECTIONS */
-    .section {
-      margin-top: 56px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .section-sub {
-      font-size: 13px;
-      color: var(--text-soft);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .card {
-      background: radial-gradient(circle at top left, #111827 0, #020617 85%);
-      border-radius: var(--radius);
-      padding: 16px 16px 14px;
-      border: 1px solid rgba(55,65,81,0.95);
-      box-shadow: 0 16px 40px rgba(15,23,42,0.85);
-      transition: transform 0.18s ease-out, box-shadow 0.2s ease-out, border-color 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 22px 55px rgba(15,23,42,0.95);
-      border-color: rgba(56,189,248,0.6);
-    }
-
-    .card-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .card-text {
-      font-size: 14px;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-
-    .badge {
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
-      background: rgba(15,23,42,0.9);
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .pill {
-      font-size: 13px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(55,65,81,0.9);
-      background: rgba(15,23,42,0.9);
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-soft);
-    }
-
-    @media (max-width: 768px) {
-      .steps {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .step {
-      border-radius: var(--radius);
-      border: 1px dashed rgba(75,85,99,0.8);
-      padding: 10px 12px;
-      background: rgba(15,23,42,0.9);
-    }
-
-    .step-title {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 20px;
-      border-top: 1px solid rgba(31,41,55,0.9);
-      font-size: 12px;
-      color: var(--text-soft);
-      text-align: center;
-      background: radial-gradient(circle at bottom, #020617 0, #020617 55%, #000 100%);
-    }
-  </style>
+  <meta name="theme-color" content="#020617" />
+
+  <!-- Open Graph básico -->
+  <meta property="og:title" content="Simon Dev | Python · Automation · Web" />
+  <meta property="og:description" content="Scrapers, automatización y pequeñas APIs para negocios que quieren ahorrar tiempo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://simondev.tech" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body data-page="home">
   <!-- NAV -->
   <nav class="nav">
     <div class="nav-inner">
-      <div class="nav-left">
+      <a href="index.html" class="nav-left nav-brand">
         <div class="nav-dot"></div>
         <div>SIMON · DEVELOPER</div>
-      </div>
+      </a>
       <div class="nav-links">
-        <a href="#about" data-key="nav_about">Sobre mí</a>
-        <a href="#projects" data-key="nav_projects">Proyectos</a>
-        <a href="#services" data-key="nav_services">Servicios</a>
-        <a href="#contact" data-key="nav_contact">Contacto</a>
+        <a href="index.html" data-key="nav_home" data-page-link="home">Inicio</a>
+        <a href="about.html" data-key="nav_about" data-page-link="about">Sobre mí</a>
+        <a href="projects.html" data-key="nav_projects" data-page-link="projects">Proyectos</a>
+        <a href="services.html" data-key="nav_services" data-page-link="services">Servicios</a>
+        <a href="contact.html" data-key="nav_contact" data-page-link="contact">Contacto</a>
       </div>
       <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
-        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn active" data-lang="es" onclick="setLang('es')" aria-label="Cambiar idioma a español">ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')" aria-label="Change language to English">EN</button>
       </div>
       <a class="nav-cta" href="mailto:simon@simondev.tech">
         <span class="icon">✉️</span> <span data-key="nav_cta">Contactar</span>
@@ -565,10 +43,10 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO HOME -->
   <header>
     <div class="container">
-      <section class="hero" id="top">
+      <section class="hero">
         <div>
           <div class="chip-row">
             <div class="chip" data-key="chip_status">
@@ -579,47 +57,75 @@
             </div>
           </div>
 
-          <h1 class="hero-title" data-key="hero_title">Hola, soy Simon.</h1>
+          <h1 class="hero-title" data-key="hero_title">Hi, I'm Simon.</h1>
           <p class="hero-sub" data-key="hero_sub">
             DEVELOPER · PYTHON · JAVA · C# · WEB
           </p>
           <p class="hero-text" data-key="hero_p1">
-            Soy developer con base sólida en múltiples lenguajes (Python, Java, C#) y experiencia
-            en desarrollo multiplataforma. Me gusta construir herramientas útiles: scrapers,
-            automatizaciones, pequeñas APIs y también páginas web limpias y funcionales.
+            I'm a developer focused on Python. I build scrapers, automations,
+            small APIs and simple websites to solve concrete problems.
           </p>
           <p class="hero-text" data-key="hero_p2">
-            Combino programación con nociones de diseño y UX para que las soluciones no solo funcionen,
-            sino que también se vean bien y sean agradables de usar.
+            I aim for clear, maintainable solutions with a clean interface,
+            without overcomplicating things for the user.
           </p>
+
+         <div class="pill-row" style="margin-top:10px;">
+  <div class="pill" data-key="pill_auto">⚙️ Automatización</div>
+  <div class="pill" data-key="pill_scraping">🕸️ Web scraping</div>
+  <div class="pill" data-key="pill_small_webs">🌐 Pequeñas webs</div>
+</div>
+
+          <div class="skills-strip">
+            <div class="skills-track">
+              <span class="skills-pill">Python</span>
+              <span class="skills-pill">Automation</span>
+              <span class="skills-pill">Web scraping</span>
+              <span class="skills-pill">Small APIs</span>
+              <span class="skills-pill">HTML &amp; CSS</span>
+              <span class="skills-pill">Clean UI</span>
+              <span class="skills-pill">CSV / Excel</span>
+              <span class="skills-pill">SQL basics</span>
+
+              <span class="skills-pill">Python</span>
+              <span class="skills-pill">Automation</span>
+              <span class="skills-pill">Web scraping</span>
+              <span class="skills-pill">Small APIs</span>
+              <span class="skills-pill">HTML &amp; CSS</span>
+              <span class="skills-pill">Clean UI</span>
+              <span class="skills-pill">CSV / Excel</span>
+              <span class="skills-pill">SQL basics</span>
+            </div>
+          </div>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="mailto:simon@simondev.tech">
-              <span class="emoji">✉️</span><span data-key="hero_cta_primary">Hablemos de tu proyecto</span>
+              <span class="emoji">✉️</span><span data-key="hero_cta_primary">Let's talk about your project</span>
             </a>
             <a class="btn" href="https://github.com/SimonDevv" target="_blank" rel="noopener">
-              <span class="emoji">💻</span><span data-key="hero_cta_secondary">Ver GitHub</span>
+              <span class="emoji">💻</span><span data-key="hero_cta_secondary">View GitHub</span>
             </a>
           </div>
         </div>
 
         <aside class="hero-card">
-          <div class="hero-card-title" data-key="hero_snapshot_title">Snapshot rápido</div>
+          <div class="hero-card-title" data-key="hero_snapshot_title">Quick snapshot</div>
           <div class="hero-metrics">
             <div>
-              <div class="metric-label" data-key="metric_role_label">Rol</div>
+              <div class="metric-label" data-key="metric_role_label">Role</div>
               <div class="metric-value" data-key="metric_role_value">Developer</div>
             </div>
             <div>
-              <div class="metric-label" data-key="metric_specialty_label">Especialidad</div>
+              <div class="metric-label" data-key="metric_specialty_label">Specialty</div>
               <div class="metric-value" data-key="metric_specialty_value">Python · Automation · Web</div>
             </div>
             <div>
-              <div class="metric-label" data-key="metric_stack_label">Stack base</div>
+              <div class="metric-label" data-key="metric_stack_label">Core stack</div>
               <div class="metric-value" data-key="metric_stack_value">Python · Java · C#</div>
             </div>
             <div>
               <div class="metric-label" data-key="metric_frontend_label">Frontend</div>
-              <div class="metric-value" data-key="metric_frontend_value">HTML · CSS · UI simple</div>
+              <div class="metric-value" data-key="metric_frontend_value">HTML · CSS · Simple UI</div>
             </div>
           </div>
 
@@ -647,457 +153,13 @@
     </div>
   </header>
 
-  <main class="container">
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="section-header">
-        <h2 class="section-title" data-key="about_title">Sobre mí</h2>
-        <p class="section-sub" data-key="about_sub">Quién soy, de dónde vengo y cómo trabajo.</p>
-      </div>
-      <div style="display:grid;gap:18px;grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr);align-items:flex-start;">
-        <div>
-          <p class="card-text" style="margin-bottom:10px;" data-key="about_p1">
-            Soy developer con base en Python y una mezcla de experiencia técnica y de negocio.
-            Me interesa especialmente automatizar tareas, crear scrapers fiables y montar pequeñas
-            APIs que resuelvan problemas concretos.
-          </p>
-          <p class="card-text" style="margin-bottom:10px;" data-key="about_p2">
-            Aunque ahora estoy más centrado en Python, vengo del mundo del desarrollo
-            de aplicaciones multiplataforma: he trabajado con Java, C#, Unity, HTML, CSS,
-            SQL, XML, JSON y conceptos de arquitectura de software. Eso me permite entender
-            los proyectos de forma global y no solo desde un lenguaje.
-          </p>
-          <p class="card-text" data-key="about_p3">
-            Además, me gusta cuidar la parte visual: estructurar bien la información,
-            usar tipografías legibles y crear interfaces limpias. No soy diseñador gráfico,
-            pero sí me preocupa que las cosas tengan buena pinta y se sientan profesionales.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-title" data-key="about_edu_title">Formación · Desarrollo de Apps</div>
-          <p class="card-text" style="margin-bottom:8px;" data-key="about_edu_p1">
-            <strong>Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</strong><br>
-            EDIB – Escuela Superior de Diseño y Desarrollo.
-          </p>
-          <p class="card-text" style="margin-bottom:8px;" data-key="about_edu_p2">
-            Durante el FP trabajé todas las áreas clave del desarrollo de software, desde la
-            programación orientada a objetos hasta bases de datos y aplicaciones completas.
-          </p>
-          <p class="card-text" style="margin-bottom:8px;" data-key="about_edu_p3">
-            Algunos puntos destacados:
-          </p>
-          <ul class="card-text" style="padding-left:18px;margin-bottom:8px;">
-            <li data-key="about_edu_li1">Programación orientada a objetos (Java, Python, C#).</li>
-            <li data-key="about_edu_li2">Bases de datos SQL y modelado relacional.</li>
-            <li data-key="about_edu_li3">Desarrollo de interfaces y aplicaciones multiplataforma.</li>
-            <li data-key="about_edu_li4">Consumo de APIs y servicios web.</li>
-            <li data-key="about_edu_li5">Arquitectura de software y buenas prácticas.</li>
-          </ul>
-          <p class="card-text" style="margin-bottom:8px;" data-key="about_edu_p4">
-            Lenguajes y tecnologías que he trabajado:
-          </p>
-          <ul class="card-text" style="padding-left:18px;">
-            <li data-key="about_edu_li6">Python, Java, C#.</li>
-            <li data-key="about_edu_li7">Unity (juegos y simulaciones).</li>
-            <li data-key="about_edu_li8">HTML, CSS, XML, JSON.</li>
-            <li data-key="about_edu_li9">SQL y modelado de bases de datos.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <div class="section-header">
-        <h2 class="section-title" data-key="projects_title">Proyectos destacados</h2>
-        <p class="section-sub" data-key="projects_sub">Muy pronto serán estudios de caso reales enlazados a GitHub.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <h3 class="card-title" data-key="proj1_title">Perfume Price Scraper</h3>
-          <p class="card-text" data-key="proj1_text">
-            Script que extrae precios de perfumes desde varias tiendas online y genera un dataset limpio
-            listo para analizar o usar en comparadores.
-          </p>
-          <div class="badge-row">
-            <span class="badge">Python</span>
-            <span class="badge">Requests</span>
-            <span class="badge">BeautifulSoup4</span>
-          </div>
-          <a class="badge-row" style="font-size:12px;" href="https://github.com/SimonDevv" target="_blank" rel="noopener" data-key="projects_view_github">
-            Ver en GitHub →
-          </a>
-        </article>
-
-        <article class="card">
-          <h3 class="card-title" data-key="proj2_title">Automation Bot</h3>
-          <p class="card-text" data-key="proj2_text">
-            Bot personal que organiza archivos, lanza avisos y reduce tareas repetitivas del día a día:
-            renombrar, mover, archivar y enviar resúmenes.
-          </p>
-          <div class="badge-row">
-            <span class="badge">Python</span>
-            <span class="badge">Automation</span>
-            <span class="badge">Scheduling</span>
-          </div>
-          <a class="badge-row" style="font-size:12px;" href="https://github.com/SimonDevv" target="_blank" rel="noopener" data-key="projects_view_github_2">
-            Ver en GitHub →
-          </a>
-        </article>
-
-        <article class="card">
-          <h3 class="card-title" data-key="proj3_title">Small Web / UI Projects</h3>
-          <p class="card-text" data-key="proj3_text">
-            Páginas y mini aplicaciones web donde combino HTML, CSS y algo de JavaScript para
-            crear interfaces sencillas, limpias y usables.
-          </p>
-          <div class="badge-row">
-            <span class="badge">HTML</span>
-            <span class="badge">CSS</span>
-            <span class="badge">UI / Layout</span>
-          </div>
-          <a class="badge-row" style="font-size:12px;" href="https://github.com/SimonDevv" target="_blank" rel="noopener" data-key="projects_view_github_3">
-            Ver en GitHub →
-          </a>
-        </article>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="section-header">
-        <h2 class="section-title" data-key="services_title">Qué puedo hacer por ti</h2>
-        <p class="section-sub" data-key="services_sub">Servicios que puedo ofrecer como freelance.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <h3 class="card-title" data-key="serv1_title">Automatización de tareas</h3>
-          <p class="card-text" data-key="serv1_text">
-            Scripts que ahorran tiempo: renombrar y mover archivos, generar informes, enviar correos
-            automáticos o procesar datos de forma recurrente.
-          </p>
-          <div class="badge-row">
-            <span class="badge">Python</span>
-            <span class="badge">CLI tools</span>
-            <span class="badge">Cron / Scheduling</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3 class="card-title" data-key="serv2_title">Web scraping a medida</h3>
-          <p class="card-text" data-key="serv2_text">
-            Scrapers para recopilar información de webs públicas: precios, productos, reseñas,
-            listados… entregados en CSV, Excel o base de datos.
-          </p>
-          <div class="badge-row">
-            <span class="badge">Scraping</span>
-            <span class="badge">Requests</span>
-            <span class="badge">BeautifulSoup4</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3 class="card-title" data-key="serv3_title">Landing pages & pequeñas webs</h3>
-          <p class="card-text" data-key="serv3_text">
-            Páginas simples pero cuidadas para proyectos personales, productos, portfolios o
-            presentaciones de servicios. Prioridad en claridad de contenido y diseño limpio.
-          </p>
-          <div class="badge-row">
-            <span class="badge">HTML</span>
-            <span class="badge">CSS</span>
-            <span class="badge">Layout</span>
-          </div>
-        </article>
-      </div>
-
-      <div class="section" style="margin-top:28px;">
-        <div class="section-header">
-          <h3 class="section-title" data-key="process_title">Cómo suelo trabajar</h3>
-          <p class="section-sub" data-key="process_sub">Proceso simple y directo.</p>
-        </div>
-        <div class="steps">
-          <div class="step">
-            <div class="step-title" data-key="step1_title">1 · Entendemos el problema</div>
-            <p data-key="step1_text">Me cuentas qué tarea quieres automatizar, qué datos necesitas o qué web quieres montar, con ejemplos reales.</p>
-          </div>
-          <div class="step">
-            <div class="step-title" data-key="step2_title">2 · Propongo solución</div>
-            <p data-key="step2_text">Te explico cómo lo haría, qué entrego exactamente y plazos aproximados, sin tecnicismos innecesarios.</p>
-          </div>
-          <div class="step">
-            <div class="step-title" data-key="step3_title">3 · Entrega y ajustes</div>
-            <p data-key="step3_text">Te entrego el script/web, lo probamos juntos y hacemos pequeños ajustes si hace falta.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="section-header">
-        <h2 class="section-title" data-key="contact_title">Contacto</h2>
-        <p class="section-sub" data-key="contact_sub">La forma más fácil de hablar conmigo.</p>
-      </div>
-      <p class="card-text" data-key="contact_text">
-        Si tienes una idea que te gustaría automatizar, necesitas un scraper, una pequeña herramienta
-        o una web sencilla pero cuidada, escríbeme con algunos detalles (qué problema tienes, qué datos
-        manejas y qué te gustaría conseguir) y te responderé con una propuesta directa.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:simon@simondev.tech">
-          ✉️ <span data-key="contact_cta_primary">Enviar email</span>
-        </a>
-        <a class="btn" href="https://github.com/SimonDevv" target="_blank" rel="noopener">
-          💻 <span data-key="contact_cta_secondary">Ver GitHub</span>
-        </a>
-      </div>
-    </section>
-  </main>
+  <!-- main vacío solo para layout (footer pegado abajo) -->
+  <main></main>
 
   <footer>
     © <span id="year"></span> Simon Dev · simondev.tech
   </footer>
 
-  <script>
-    // Traducciones + SEO (title y meta description)
-    const translations = {
-      es: {
-        __title: "Simon Dev | Developer · Python · Web · Automation",
-        __description: "Simon Dev - Developer con base sólida en desarrollo multiplataforma (Python, Java, C#, Unity, Web) especializado en automatización, scraping y pequeñas APIs para clientes remotos.",
-
-        nav_about: "Sobre mí",
-        nav_projects: "Proyectos",
-        nav_services: "Servicios",
-        nav_contact: "Contacto",
-        nav_cta: "Contactar",
-
-        chip_status: "🟢 Disponible · Trabajo remoto / freelance",
-        chip_code: "&lt;code&gt; developer · python · web &lt;/code&gt;",
-
-        hero_title: "Hola, soy Simon.",
-        hero_sub: "DEVELOPER · PYTHON · JAVA · C# · WEB",
-        hero_p1: "Soy developer con base sólida en múltiples lenguajes (Python, Java, C#) y experiencia en desarrollo multiplataforma. Me gusta construir herramientas útiles: scrapers, automatizaciones, pequeñas APIs y también páginas web limpias y funcionales.",
-        hero_p2: "Combino programación con nociones de diseño y UX para que las soluciones no solo funcionen, sino que también se vean bien y sean agradables de usar.",
-        hero_cta_primary: "Hablemos de tu proyecto",
-        hero_cta_secondary: "Ver GitHub",
-
-        hero_snapshot_title: "Snapshot rápido",
-        metric_role_label: "Rol",
-        metric_role_value: "Developer",
-        metric_specialty_label: "Especialidad",
-        metric_specialty_value: "Python · Automation · Web",
-        metric_stack_label: "Stack base",
-        metric_stack_value: "Python · Java · C#",
-        metric_frontend_label: "Frontend",
-        metric_frontend_value: "HTML · CSS · UI simple",
-
-        about_title: "Sobre mí",
-        about_sub: "Quién soy, de dónde vengo y cómo trabajo.",
-        about_p1: "Soy developer con base en Python y una mezcla de experiencia técnica y de negocio. Me interesa especialmente automatizar tareas, crear scrapers fiables y montar pequeñas APIs que resuelvan problemas concretos.",
-        about_p2: "Aunque ahora estoy más centrado en Python, vengo del mundo del desarrollo de aplicaciones multiplataforma: he trabajado con Java, C#, Unity, HTML, CSS, SQL, XML, JSON y conceptos de arquitectura de software. Eso me permite entender los proyectos de forma global y no solo desde un lenguaje.",
-        about_p3: "Además, me gusta cuidar la parte visual: estructurar bien la información, usar tipografías legibles y crear interfaces limpias. No soy diseñador gráfico, pero sí me preocupa que las cosas tengan buena pinta y se sientan profesionales.",
-
-        about_edu_title: "Formación · Desarrollo de Apps",
-        about_edu_p1: "<strong>Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</strong><br>EDIB – Escuela Superior de Diseño y Desarrollo.",
-        about_edu_p2: "Durante el FP trabajé todas las áreas clave del desarrollo de software, desde la programación orientada a objetos hasta bases de datos y aplicaciones completas.",
-        about_edu_p3: "Algunos puntos destacados:",
-        about_edu_li1: "Programación orientada a objetos (Java, Python, C#).",
-        about_edu_li2: "Bases de datos SQL y modelado relacional.",
-        about_edu_li3: "Desarrollo de interfaces y aplicaciones multiplataforma.",
-        about_edu_li4: "Consumo de APIs y servicios web.",
-        about_edu_li5: "Arquitectura de software y buenas prácticas.",
-        about_edu_p4: "Lenguajes y tecnologías que he trabajado:",
-        about_edu_li6: "Python, Java, C#.",
-        about_edu_li7: "Unity (juegos y simulaciones).",
-        about_edu_li8: "HTML, CSS, XML, JSON.",
-        about_edu_li9: "SQL y modelado de bases de datos.",
-
-        projects_title: "Proyectos destacados",
-        projects_sub: "Muy pronto serán estudios de caso reales enlazados a GitHub.",
-        proj1_title: "Perfume Price Scraper",
-        proj1_text: "Script que extrae precios de perfumes desde varias tiendas online y genera un dataset limpio listo para analizar o usar en comparadores.",
-        proj2_title: "Automation Bot",
-        proj2_text: "Bot personal que organiza archivos, lanza avisos y reduce tareas repetitivas del día a día: renombrar, mover, archivar y enviar resúmenes.",
-        proj3_title: "Small Web / UI Projects",
-        proj3_text: "Páginas y mini aplicaciones web donde combino HTML, CSS y algo de JavaScript para crear interfaces sencillas, limpias y usables.",
-        projects_view_github: "Ver en GitHub →",
-        projects_view_github_2: "Ver en GitHub →",
-        projects_view_github_3: "Ver en GitHub →",
-
-        services_title: "Qué puedo hacer por ti",
-        services_sub: "Servicios que puedo ofrecer como freelance.",
-        serv1_title: "Automatización de tareas",
-        serv1_text: "Scripts que ahorran tiempo: renombrar y mover archivos, generar informes, enviar correos automáticos o procesar datos de forma recurrente.",
-        serv2_title: "Web scraping a medida",
-        serv2_text: "Scrapers para recopilar información de webs públicas: precios, productos, reseñas, listados… entregados en CSV, Excel o base de datos.",
-        serv3_title: "Landing pages & pequeñas webs",
-        serv3_text: "Páginas simples pero cuidadas para proyectos personales, productos, portfolios o presentaciones de servicios. Prioridad en claridad de contenido y diseño limpio.",
-
-        process_title: "Cómo suelo trabajar",
-        process_sub: "Proceso simple y directo.",
-        step1_title: "1 · Entendemos el problema",
-        step1_text: "Me cuentas qué tarea quieres automatizar, qué datos necesitas o qué web quieres montar, con ejemplos reales.",
-        step2_title: "2 · Propongo solución",
-        step2_text: "Te explico cómo lo haría, qué entrego exactamente y plazos aproximados, sin tecnicismos innecesarios.",
-        step3_title: "3 · Entrega y ajustes",
-        step3_text: "Te entrego el script/web, lo probamos juntos y hacemos pequeños ajustes si hace falta.",
-
-        contact_title: "Contacto",
-        contact_sub: "La forma más fácil de hablar conmigo.",
-        contact_text: "Si tienes una idea que te gustaría automatizar, necesitas un scraper, una pequeña herramienta o una web sencilla pero cuidada, escríbeme con algunos detalles (qué problema tienes, qué datos manejas y qué te gustaría conseguir) y te responderé con una propuesta directa.",
-        contact_cta_primary: "Enviar email",
-        contact_cta_secondary: "Ver GitHub"
-      },
-
-      en: {
-        __title: "Simon Dev | Developer · Python · Web · Automation",
-        __description: "Simon Dev - Developer with a solid background in cross-platform development (Python, Java, C#, Unity, Web) specialized in automation, scraping and small APIs for remote clients.",
-
-        nav_about: "About",
-        nav_projects: "Projects",
-        nav_services: "Services",
-        nav_contact: "Contact",
-        nav_cta: "Get in touch",
-
-        chip_status: "🟢 Available · Remote / freelance",
-        chip_code: "&lt;code&gt; developer · python · web &lt;/code&gt;",
-
-        hero_title: "Hi, I'm Simon.",
-        hero_sub: "DEVELOPER · PYTHON · JAVA · C# · WEB",
-        hero_p1: "I'm a developer with a solid foundation in multiple languages (Python, Java, C#) and experience in cross-platform development. I enjoy building useful tools: scrapers, automations, small APIs and clean, functional websites.",
-        hero_p2: "I combine programming with basic design and UX principles so the solutions not only work, but also look good and feel pleasant to use.",
-        hero_cta_primary: "Let's talk about your project",
-        hero_cta_secondary: "View GitHub",
-
-        hero_snapshot_title: "Quick snapshot",
-        metric_role_label: "Role",
-        metric_role_value: "Developer",
-        metric_specialty_label: "Specialty",
-        metric_specialty_value: "Python · Automation · Web",
-        metric_stack_label: "Core stack",
-        metric_stack_value: "Python · Java · C#",
-        metric_frontend_label: "Frontend",
-        metric_frontend_value: "HTML · CSS · Simple UI",
-
-        about_title: "About me",
-        about_sub: "Who I am, where I come from and how I work.",
-        about_p1: "I'm a developer focused on Python with a mix of technical and business experience. I'm especially interested in automating tasks, building reliable scrapers and creating small APIs that solve concrete problems.",
-        about_p2: "Even though I'm now more focused on Python, I come from a cross-platform application development background: I've worked with Java, C#, Unity, HTML, CSS, SQL, XML, JSON and software architecture concepts. That helps me understand projects globally, not only from one language's perspective.",
-        about_p3: "I also like to take care of the visual side: structuring information clearly, using readable typography and creating clean interfaces. I'm not a graphic designer, but I do care about things looking professional and feeling polished.",
-
-        about_edu_title: "Education · App Development",
-        about_edu_p1: "<strong>Higher Technician in Cross-Platform Application Development</strong><br>EDIB – Higher School of Design and Development.",
-        about_edu_p2: "During my degree I worked on all key areas of software development, from object-oriented programming to databases and complete applications.",
-        about_edu_p3: "Some highlights:",
-        about_edu_li1: "Object-oriented programming (Java, Python, C#).",
-        about_edu_li2: "SQL databases and relational modeling.",
-        about_edu_li3: "Interface and cross-platform application development.",
-        about_edu_li4: "Consuming APIs and web services.",
-        about_edu_li5: "Software architecture and best practices.",
-        about_edu_p4: "Languages and technologies I've worked with:",
-        about_edu_li6: "Python, Java, C#.",
-        about_edu_li7: "Unity (games and simulations).",
-        about_edu_li8: "HTML, CSS, XML, JSON.",
-        about_edu_li9: "SQL and database modeling.",
-
-        projects_title: "Featured projects",
-        projects_sub: "Soon these will be real case studies linked to GitHub.",
-        proj1_title: "Perfume Price Scraper",
-        proj1_text: "Script that extracts perfume prices from several online stores and generates a clean dataset ready to analyze or use in price comparators.",
-        proj2_title: "Automation Bot",
-        proj2_text: "Personal bot that organizes files, sends alerts and reduces repetitive daily tasks: renaming, moving, archiving and sending summaries.",
-        proj3_title: "Small Web / UI Projects",
-        proj3_text: "Web pages and mini web apps where I combine HTML, CSS and a bit of JavaScript to create simple, clean and usable interfaces.",
-        projects_view_github: "View on GitHub →",
-        projects_view_github_2: "View on GitHub →",
-        projects_view_github_3: "View on GitHub →",
-
-        services_title: "What I can do for you",
-        services_sub: "Services I can offer as a freelancer.",
-        serv1_title: "Task automation",
-        serv1_text: "Scripts that save time: renaming and moving files, generating reports, sending automatic emails or processing data on a recurring basis.",
-        serv2_title: "Custom web scraping",
-        serv2_text: "Scrapers to collect information from public websites: prices, products, reviews, listings… delivered in CSV, Excel or a database.",
-        serv3_title: "Landing pages & small websites",
-        serv3_text: "Simple but polished pages for personal projects, products, portfolios or service presentations. Focus on clear content and clean design.",
-
-        process_title: "How I usually work",
-        process_sub: "A simple and direct process.",
-        step1_title: "1 · Understand the problem",
-        step1_text: "You tell me what you want to automate, what data you need or what kind of website you want, using real examples.",
-        step2_title: "2 · I propose a solution",
-        step2_text: "I explain how I would approach it, what I will deliver exactly and rough timelines, without unnecessary technical jargon.",
-        step3_title: "3 · Delivery and tweaks",
-        step3_text: "I deliver the script/website, we test it together and make small adjustments if needed.",
-
-        contact_title: "Contact",
-        contact_sub: "The easiest way to reach me.",
-        contact_text: "If you have an idea you'd like to automate, need a scraper, a small tool or a simple but polished website, send me some details (what problem you have, what data you handle and what you'd like to achieve) and I'll reply with a direct proposal.",
-        contact_cta_primary: "Send email",
-        contact_cta_secondary: "View GitHub"
-      }
-    };
-
-    function setLang(lang) {
-      const langBtns = document.querySelectorAll(".lang-btn");
-      langBtns.forEach(btn => {
-        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
-      });
-
-      // atributo lang en <html>
-      document.documentElement.lang = lang;
-
-      // Textos de la página
-      document.querySelectorAll("[data-key]").forEach(el => {
-        const key = el.getAttribute("data-key");
-        const value = translations[lang] && translations[lang][key];
-        if (value !== undefined) {
-          el.innerHTML = value;
-        }
-      });
-
-      // Title dinámico
-      if (translations[lang].__title) {
-        document.title = translations[lang].__title;
-      }
-
-      // Meta description dinámica
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc && translations[lang].__description) {
-        metaDesc.setAttribute("content", translations[lang].__description);
-      }
-
-      localStorage.setItem("lang", lang);
-    }
-
-    // Año footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Efecto de typing en la consola
-    const typingEl = document.getElementById("typing");
-    const text = "building tools with code...";
-    let idx = 0;
-
-    function type() {
-      if (!typingEl) return;
-      typingEl.textContent = text.slice(0, idx);
-      idx++;
-      if (idx <= text.length) {
-        setTimeout(type, 90);
-      } else {
-        setTimeout(() => {
-          idx = 0;
-          type();
-        }, 1600);
-      }
-    }
-
-    // Inicializar idioma guardado y luego efecto typing
-    document.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem("lang") || "es";
-      setLang(savedLang);
-      type();
-    });
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
