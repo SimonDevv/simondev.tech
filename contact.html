@@ -15,17 +15,21 @@
         <div>SIMON · DEVELOPER</div>
       </a>
       <div class="nav-links">
-       <a href="about.html" data-key="nav_about" data-page-link="about">Sobre mí</a>
-<a href="projects.html" data-key="nav_projects" data-page-link="projects">Proyectos</a>
-<a href="services.html" data-key="nav_services" data-page-link="services">Servicios</a>
-<a href="contact.html" data-key="nav_contact" data-page-link="contact">Contacto</a>
-
+        <a href="about.html" data-key="nav_about" data-page-link="about">Sobre mí</a>
+        <a href="projects.html" data-key="nav_projects" data-page-link="projects">Proyectos</a>
+        <a href="services.html" data-key="nav_services" data-page-link="services">Servicios</a>
+        <a href="contact.html" data-key="nav_contact" data-page-link="contact">Contacto</a>
       </div>
       <div class="lang-switcher">
         <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
         <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       </div>
-      <a class="nav-cta" href="mailto:simon@simondev.tech">
+      <!-- NAV CTA sin mailto ni @ -->
+      <a
+        class="nav-cta js-email-link"
+        data-user="simon"
+        data-domain="simondev.tech"
+      >
         <span class="icon">✉️</span> <span data-key="nav_cta">Contactar</span>
       </a>
     </div>
@@ -50,7 +54,12 @@
         con una solución concreta y un rango de presupuesto.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:simon@simondev.tech">
+        <!-- Botón principal sin mailto ni @ -->
+        <a
+          class="btn btn-primary js-email-link"
+          data-user="simon"
+          data-domain="simondev.tech"
+        >
           ✉️ <span data-key="contact_cta_primary">Enviar email</span>
         </a>
         <a class="btn" href="https://github.com/SimonDevv" target="_blank" rel="noopener">

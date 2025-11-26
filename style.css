@@ -596,22 +596,6 @@ header {
   color: var(--text-soft);
 }
 
-/* Layout genérico de 2 columnas para secciones como "Sobre mí" */
-.two-col-layout {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
-  align-items: flex-start;
-}
-
-/* En pantallas pequeñas → una sola columna (lo que ya te gusta en móvil) */
-@media (max-width: 768px) {
-  .two-col-layout {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-
 @media (max-width: 768px) {
   .steps {
     grid-template-columns: minmax(0, 1fr);
@@ -733,4 +717,3 @@ body:not([data-page="home"]) main .section--alt:first-of-type {
   padding-top: 16px;
   padding-bottom: 20px;
 }
-

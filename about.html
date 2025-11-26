@@ -2,32 +2,28 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Sobre mí · Simon Dev</title>
+  <title>Sobre mí | Simon Dev</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Sobre mí · Simon Dev - Developer especializado en Python, automatización, scraping y pequeñas APIs."
-  >
-  <meta name="theme-color" content="#020617" />
+  <meta name="description" content="Sobre mí - Simon Dev, developer especializado en Python, automatización y scraping." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="about">
-  <!-- NAV -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-left">
+      <a href="index.html" class="nav-left nav-brand">
         <div class="nav-dot"></div>
         <div>SIMON · DEVELOPER</div>
       </a>
       <div class="nav-links">
-        <a href="about.html" class="nav-link-active" data-key="nav_about" data-page-link="about">Sobre mí</a>
-        <a href="projects.html" data-key="nav_projects" data-page-link="projects">Proyectos</a>
-        <a href="services.html" data-key="nav_services" data-page-link="services">Servicios</a>
-        <a href="contact.html" data-key="nav_contact" data-page-link="contact">Contacto</a>
+        <a href="about.html" data-key="nav_about" data-page-link="about">Sobre mí</a>
+<a href="projects.html" data-key="nav_projects" data-page-link="projects">Proyectos</a>
+<a href="services.html" data-key="nav_services" data-page-link="services">Servicios</a>
+<a href="contact.html" data-key="nav_contact" data-page-link="contact">Contacto</a>
+
       </div>
       <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="es" onclick="setLang('es')" aria-label="Cambiar idioma a español">ES</button>
-        <button class="lang-btn" data-lang="en" onclick="setLang('en')" aria-label="Change language to English">EN</button>
+        <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       </div>
       <a class="nav-cta" href="mailto:simon@simondev.tech">
         <span class="icon">✉️</span> <span data-key="nav_cta">Contactar</span>
@@ -35,7 +31,6 @@
     </div>
   </nav>
 
-  <!-- HERO SOBRE MÍ -->
   <header>
     <div class="container">
       <div class="page-hero">
@@ -46,30 +41,23 @@
   </header>
 
   <main class="container">
-    <!-- BLOQUE PRINCIPAL 2 COLUMNAS -->
     <section class="section section--alt">
       <div class="two-col-layout">
-        <!-- Columna izquierda: bullets -->
         <div class="about-bullets">
           <p class="card-text" data-key="about_p1">
-            Soy developer con base en Python y una mezcla de experiencia técnica y de negocio.
-            Me interesa especialmente automatizar tareas, crear scrapers fiables y montar pequeñas
-            APIs que resuelvan problemas concretos.
+            Trabajo sobre todo con Python para automatizar tareas, crear scrapers estables
+            y pequeñas APIs enfocadas a negocio.
           </p>
           <p class="card-text" data-key="about_p2">
-            Aunque ahora estoy más centrado en Python, vengo del mundo del desarrollo
-            de aplicaciones multiplataforma: he trabajado con Java, C#, Unity, HTML, CSS,
-            SQL, XML, JSON y conceptos de arquitectura de software. Eso me permite entender
-            los proyectos de forma global y no solo desde un lenguaje.
+            Vengo del desarrollo multiplataforma (Java, C#, Unity, HTML, CSS, SQL…),
+            así que estoy acostumbrado a ver el proyecto como un todo, no solo como
+            funciones sueltas.
           </p>
           <p class="card-text" data-key="about_p3">
-            Además, me gusta cuidar la parte visual: estructurar bien la información,
-            usar tipografías legibles y crear interfaces limpias. No soy diseñador gráfico,
-            pero sí me preocupa que las cosas tengan buena pinta y se sientan profesionales.
+            Me gusta que las herramientas sean fáciles de usar: estructura clara,
+            tipografías legibles y diseño sencillo pero cuidado.
           </p>
         </div>
-
-        <!-- Columna derecha: formación -->
         <div class="card">
           <div class="card-title" data-key="about_edu_title">Formación · Desarrollo de Apps</div>
           <p class="card-text" style="margin-bottom:8px;" data-key="about_edu_p1">

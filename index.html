@@ -37,9 +37,14 @@
         <button class="lang-btn active" data-lang="es" onclick="setLang('es')" aria-label="Cambiar idioma a español">ES</button>
         <button class="lang-btn" data-lang="en" onclick="setLang('en')" aria-label="Change language to English">EN</button>
       </div>
-      <a class="nav-cta" href="mailto:simon@simondev.tech">
-        <span class="icon">✉️</span> <span data-key="nav_cta">Contactar</span>
-      </a>
+      <a
+  class="nav-cta js-email-link"
+  data-user="simon"
+  data-domain="simondev.tech"
+>
+  <span class="icon">✉️</span> <span data-key="nav_cta">Contactar</span>
+</a>
+
     </div>
   </nav>
 
@@ -99,9 +104,14 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:simon@simondev.tech">
-              <span class="emoji">✉️</span><span data-key="hero_cta_primary">Let's talk about your project</span>
-            </a>
+            <a
+  class="btn btn-primary js-email-link"
+  data-user="simon"
+  data-domain="simondev.tech"
+>
+  <span class="emoji">✉️</span><span data-key="hero_cta_primary">Let's talk about your project</span>
+</a>
+
             <a class="btn" href="https://github.com/SimonDevv" target="_blank" rel="noopener">
               <span class="emoji">💻</span><span data-key="hero_cta_secondary">View GitHub</span>
             </a>

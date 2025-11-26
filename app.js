@@ -288,3 +288,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // reveal en cards / steps
   initReveal();
 });
+
+// Montar emails en los enlaces sin exponer la dirección en el HTML
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".js-email-link").forEach(el => {
+    const user = el.getAttribute("data-user");
+    const domain = el.getAttribute("data-domain");
+    if (!user || !domain) return;
+
+    const email = `${user}@${domain}`;
+    el.setAttribute("href", `mailto:${email}`);
+  });
+});
+
